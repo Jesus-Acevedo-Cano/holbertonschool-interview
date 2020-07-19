@@ -13,6 +13,8 @@ def canUnlockAll(boxes):
         for j in boxes[i]:
             if i != j and j not in key:
                 key.append(j)
+            if i + 1 not in key:
+                break
     key.sort()
     if i not in key:
         tof = 1
