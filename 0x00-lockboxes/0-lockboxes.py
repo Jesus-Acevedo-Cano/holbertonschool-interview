@@ -19,7 +19,9 @@ def canUnlockAll(boxes):
         key.sort()
         if i not in key:
             tof = 1
-    if tof != 0:
-        return False
+        if tof != 0:
+            return False
+        else:
+            return True
     else:
-        return True
+        return False
