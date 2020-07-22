@@ -7,9 +7,7 @@ def canUnlockAll(boxes):
         lockboxes function to unlock
         boxes (list): list of boxes
     """
-    if not boxes:
-        return False
-    else:
+    if boxes:
         key = [0]
         tof = 0
         for i in range(len(boxes)):
