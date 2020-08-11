@@ -13,8 +13,7 @@ def minOperations(n):
     while n > 1:
         if n % div != 0:
             div += 1
-        else:
-            n = n / div
-            count += div
+        n = n / div
+        count += div
 
     return count
