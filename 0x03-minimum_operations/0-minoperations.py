@@ -10,10 +10,10 @@ def minOperations(n):
     div = 2
     if not isinstance(n, int) or n <= 1:
         return 0
-    else:
-        while n > 1:
-            if n % div != 0:
-                div += 1
+    while n > 1:
+        if n % div != 0:
+            div += 1
+        else:
             n = n / div
             count += div
 
