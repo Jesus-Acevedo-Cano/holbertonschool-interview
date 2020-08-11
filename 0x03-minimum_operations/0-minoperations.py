@@ -7,7 +7,7 @@ Method that calculates the fewest number of operations
 def minOperations(n):
 
     count = 2
-    if n == int or n <= 1:
+    if not isinstance(n, int) or n <= 1:
         return 0
     else:
         while n > 1:
