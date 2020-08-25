@@ -1,32 +1,65 @@
 #include "lists.h"
+
 /**
- * is_palindrome - check if a linked list is a palindrome
- * @head: pointer to the head of the linked list
+ * reverse - Function that reverse the list.
+ * @head: Pointer to pointer of first node of listint_t list.
  *
- * Return: 0 if it is not a palindrome, 1 if it is a palindrome
- */
+ * Return: nothing.
+*/
+
+void reverse(listint_t **head)
+{
+	listint_t *prev = NULL, *ptr = *head, *aux;
+
+	while (ptr)
+	{
+		aux = ptr->next;
+		ptr->next = prev;
+		prev = ptr;
+		ptr = aux;
+	}
+	*head = prev;
+}
+
+/**
+ * is_palindrome - Function in C that checks if a singly linked
+ * list is a palindrome.
+ * @head: Pointer to pointer of first node of listint_t list.
+ *
+ * Return: 0 if it is not a palindrome, 1 if it is a palindrome.
+*/
+
 int is_palindrome(listint_t **head)
 {
-	int pal_list[50];
-	int i;
-	listint_t *current;
+	listint_t *first, *second, *mid = NULL;
 
+	first = second = *head;
 
 	if (head == NULL || *head == NULL)
 		return (1);
 
-	current = *head;
-
-	for (i = 0; current != NULL; i++)
+	while (second)
 	{
-		pal_list[i] = current->n;
-		current = current->next;
+		second = second->next;
+		if (second)
+		{
+			second = second->next;
+			first = first->next;
+		}
 	}
-	i -= 1;
-	for (int x = 0; x <= i; x++, i--)
+	mid = first;
+
+	reverse(&(mid->next));
+
+	first = *head;
+	second = mid->next;
+
+	while (second != NULL)
 	{
-		if (pal_list[x] != pal_list[i])
+		if (first->n != second->n)
 			return (0);
+		first = first->next;
+		second = second->next;
 	}
 	return (1);
 }
