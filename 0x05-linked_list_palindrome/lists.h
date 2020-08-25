@@ -32,6 +32,5 @@ void free_listint(listint_t *head);
 
 /** 0. Checks if a singly linked list is a palindrome. */
 int is_palindrome(listint_t **head);
-void reverse(listint_t **head);
 
 #endif /* LISTS_H */
