@@ -23,20 +23,21 @@ def print_metrics():
         if psc[key]:
             print("{}: {}".format(key, psc[key]))
 
-try:
-    for line in sys.stdin:
-        line = line.strip().split(' ')
-        file_size += int(line[8])
-        counter += 1
-        status_code = line[7]
+if __name__ == "__main__":
+    try:
+        for line in sys.stdin:
+            line = line.strip().split(' ')
+            file_size += int(line[8])
+            counter += 1
+            status_code = line[7]
 
-        for key in sorted(psc.keys()):
-            if status_code == key:
-                psc[key] += 1
-        if counter % 10 == 0:
-            print_metrics()
+            for key in sorted(psc.keys()):
+                if status_code == key:
+                    psc[key] += 1
+            if counter % 10 == 0:
+                print_metrics()
 
-except KeyboardInterrupt:
+    except KeyboardInterrupt:
+        print_metrics()
+        raise
     print_metrics()
-    raise
-print_metrics()
