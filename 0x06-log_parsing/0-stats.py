@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 import sys
-import fileinput
 
 psc = {
     "200": 0,
@@ -27,9 +26,9 @@ try:
     for line in sys.stdin:
         try:
             line = line.strip().split(' ')
-            file_size += int(line[len(line)-1])
+            file_size += int(line[-1])
             counter += 1
-            status_code = line[len(line)-2]
+            status_code = line[-2]
 
             for key in sorted(psc.keys()):
                 if status_code == key:
