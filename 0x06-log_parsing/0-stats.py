@@ -23,17 +23,18 @@ if __name__ == "__main__":
             file_size += int(line[8])
             counter += 1
             status_code = line[7]
+
             for key, value in psc.items():
                 if status_code == key:
                     psc[key] += 1
             if counter % 10 == 0:
                 print('File size: {}'.format(file_size))
-                for key in psc.keys():
+                for key in sorted(psc.keys()):
                     if psc[key]:
                         print("{}: {}".format(key, psc[key]))
 
     except KeyboardInterrupt:
         print('File size: {}'.format(file_size))
-        for key in psc.keys():
+        for key in sorted(psc.keys()):
             if psc[key]:
                 print("{}: {}".format(key, psc[key]))
