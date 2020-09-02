@@ -30,12 +30,9 @@ try:
         counter += 1
         status_code = line[7]
 
-        try:
-            for key in sorted(psc.keys()):
-                if status_code == key:
-                    psc[key] += 1
-        except:
-            pass
+        for key in sorted(psc.keys()):
+            if status_code == key:
+                psc[key] += 1
         if counter % 10 == 0:
             print_metrics()
 
