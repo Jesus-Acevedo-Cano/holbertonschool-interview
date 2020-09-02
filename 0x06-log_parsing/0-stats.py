@@ -15,6 +15,15 @@ psc = {
 file_size = 0
 counter = 0
 
+
+def print_metrics():
+    """ function to print metrics """
+    print('File size: {}'.format(file_size))
+    for key in sorted(psc.keys()):
+        if psc[key]:
+            print("{}: {}".format(key, psc[key]))
+
+
 try:
     for line in sys.stdin:
         line = line.strip().split(' ')
@@ -26,19 +35,9 @@ try:
             if status_code == key:
                 psc[key] += 1
         if counter % 10 == 0:
-            print('File size: {}'.format(file_size))
-            for key in sorted(psc.keys()):
-                if psc[key]:
-                    print("{}: {}".format(key, psc[key]))
+            print_metrics()
 
 except KeyboardInterrupt:
-    print('File size: {}'.format(file_size))
-    for key in sorted(psc.keys()):
-        if psc[key]:
-            print("{}: {}".format(key, psc[key]))
+    print_metrics()
     raise
-print('File size: {}'.format(file_size))
-for key in sorted(psc.keys()):
-    if psc[key]:
-        print("{}: {}".format(key, psc[key]))
-
+print_metrics()
