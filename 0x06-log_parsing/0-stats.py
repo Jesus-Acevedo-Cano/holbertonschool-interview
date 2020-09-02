@@ -25,14 +25,17 @@ def print_metrics():
 
 try:
     for line in sys.stdin:
-        line = line.strip().split(' ')
-        file_size += int(line[len(line)-1])
-        counter += 1
-        status_code = line[len(line)-2]
+        try:
+            line = line.strip().split(' ')
+            file_size += int(line[len(line)-1])
+            counter += 1
+            status_code = line[len(line)-2]
 
-        for key in sorted(psc.keys()):
-            if status_code == key:
-                psc[key] += 1
+            for key in sorted(psc.keys()):
+                if status_code == key:
+                    psc[key] += 1
+        except:
+            pass
         if counter % 10 == 0:
             print_metrics()
 
