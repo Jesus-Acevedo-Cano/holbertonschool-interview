@@ -18,7 +18,6 @@ counter = 0
 
 def print_metrics():
     """ function to print metrics """
-
     print('File size: {}'.format(file_size))
     for key in sorted(psc.keys()):
         if psc[key]:
@@ -27,9 +26,9 @@ def print_metrics():
 try:
     for line in sys.stdin:
         line = line.strip().split(' ')
-        file_size += int(line[8])
+        file_size += int(line[len(line)-1])
         counter += 1
-        status_code = line[7]
+        status_code = line[len(line)-2]
 
         for key in sorted(psc.keys()):
             if status_code == key:
