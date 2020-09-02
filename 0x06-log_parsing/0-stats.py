@@ -18,12 +18,11 @@ counter = 0
 if __name__ == "__main__":
 
     try:
-        for line in fileinput.input():
+        for line in sys.stdin:
             line = line.strip().split(' ')
             file_size += int(line[8])
             counter += 1
             status_code = line[7]
-            print(line)
             for key, value in psc.items():
                 if status_code == key:
                     psc[key] += 1
