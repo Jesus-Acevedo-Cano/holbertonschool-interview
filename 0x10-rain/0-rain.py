@@ -5,7 +5,7 @@
 def rain(walls):
     """ calculate contained raindrops """
     raindrops = 0
-    if not walls:
+    if len(walls) < 1:
         return 0
     for i in range(len(walls)):
         raindrops += walls[i]
